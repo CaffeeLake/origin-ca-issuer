@@ -4,21 +4,21 @@ origin-ca-issuer is a Kubernetes addon to automate issuance and renewals of Clou
 
 ## Prerequisites
 
-* Kubernetes 1.16+
-* cert-manager 1.0.0+
+- Kubernetes 1.16+
+- cert-manager 1.0.0+
 
 ## Installing the Chart
 
 Before installing the chart, you must first install [cert-manager](https://cert-manager.io/docs/installation/), and the origin-ca-issuer CustomResourceDefinition resources.
 
 ```shell
-VERSION="v0.6.1"
+VERSION="v0.6.2"
 kubectl apply -f https://raw.githubusercontent.com/cloudflare/origin-ca-issuer/${VERSION}/deploy/crds/cert-manager.k8s.cloudflare.com_originissuers.yaml
 ```
 
 To install the chart with the release name `my-release`:
 
-``` shell
+```shell
 helm install --name my-release --namespace origin-ca-issuer .
 ```
 
@@ -28,13 +28,14 @@ In order to begin issuer certificates from the Cloudflare Origin CA you will nee
 
 To uninstall/delete the `my-release` deployment:
 
-``` shell
+```shell
 helm delete my-release
 ```
+
 If you want to completely uninstall origin-ca-issuer from your cluster, you also need to delete the previously installed CustomResourceDefinition resources:
 
-``` shell
-VERSION="v0.6.1"
+```shell
+VERSION="v0.6.2"
 kubectl delete -f https://raw.githubusercontent.com/cloudflare/origin-ca-issuer/${VERSION}/deploy/crds/cert-manager.k8s.cloudflare.com_originissuers.yaml
 ```
 
@@ -43,7 +44,7 @@ kubectl delete -f https://raw.githubusercontent.com/cloudflare/origin-ca-issuer/
 The following table lists the configurable parameters of the origin-ca-issuer chart and their default values.
 
 | Parameter                             | Description                                                                             | Default                          |
-|---------------------------------------|-----------------------------------------------------------------------------------------|----------------------------------|
+| ------------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------- |
 | `global.imagePullSecrets`             | Reference to one or more secrets to be used when pulling images                         | `[]`                             |
 | `global.rbac.create`                  | If `true`, create and use RBAC resources                                                | `true`                           |
 | `global.priorityClassName`            | Priority class name for origin-ca-issuer pods                                           | `""`                             |
@@ -74,7 +75,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 Alternatively, a YAML value that specifies the values for the above parameters can be provided while installing the chart. For example.
 
-``` shell
+```shell
 helm install --name my-release -f values.yaml .
 ```
 
